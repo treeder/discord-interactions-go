@@ -29,17 +29,20 @@ type InteractionResponseFlags int64
 
 const Ephemeral InteractionResponseFlags = 1 << 6
 
+type User struct {
+	ID            string `json:"id"`
+	Username      string `json:"username"`
+	Avatar        string `json:"avatar"`
+	Discriminator string `json:"discriminator"`
+	PublicFlags   int64  `json:"public_flags"`
+}
+
 type Data struct {
 	Type   InteractionType `json:"type"`
 	Token  string          `json:"token"`
+	User   User            `json:"user"`
 	Member struct {
-		User struct {
-			ID            string `json:"id"`
-			Username      string `json:"username"`
-			Avatar        string `json:"avatar"`
-			Discriminator string `json:"discriminator"`
-			PublicFlags   int64  `json:"public_flags"`
-		} `json:"user"`
+		User         User      `json:"user"`
 		Roles        []string  `json:"roles"`
 		PremiumSince time.Time `json:"premium_since"`
 		Permissions  string    `json:"permissions"`
