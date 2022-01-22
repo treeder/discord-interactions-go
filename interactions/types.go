@@ -12,6 +12,8 @@ const (
 	_ InteractionType = iota
 	Ping
 	ApplicationCommand
+	MessageComponent // user clicks a button
+	ApplicationCommandAutoComplete
 )
 
 type InteractionResponseType int
@@ -56,9 +58,10 @@ type Data struct {
 	ID      string `json:"id"`
 	GuildID string `json:"guild_id"`
 	Data    struct {
-		Options []ApplicationCommandInteractionDataOption `json:"options"`
-		Name    string                                    `json:"name"`
-		ID      string                                    `json:"id"`
+		Options  []ApplicationCommandInteractionDataOption `json:"options"`
+		Name     string                                    `json:"name"`
+		ID       string                                    `json:"id"`
+		CustomID string                                    `json:"custom_id"`
 	} `json:"data"`
 	ChannelID string `json:"channel_id"`
 }
@@ -78,9 +81,38 @@ type InteractionResponse struct {
 	Data *InteractionApplicationCommandCallbackData `json:"data,omitempty"`
 }
 
+type ComponentType int
+
+const (
+	_ ComponentType = iota
+	ActionRow
+	Button
+	SelectMenu
+)
+
+type ButtonStyle int
+
+const (
+	_ ButtonStyle = iota
+	Primary
+	Secondary
+	Success
+	Dange
+	Link
+)
+
+type Component struct {
+	Type       ComponentType `json:"type"`
+	Style      ButtonStyle   `json:"style"` // required for button type
+	Label      string        `json:"label"`
+	CustomID   string        `json:"custom_id"` // required for anything but action row
+	Components []Component   `json:"components,omitempty"`
+}
+
 type InteractionApplicationCommandCallbackData struct {
 	TTS             *bool            `json:"tts,omitempty"`
 	Content         string           `json:"content"`
 	Embeds          json.Unmarshaler `json:"embeds,omitempty"`
 	AllowedMentions json.Unmarshaler `json:"allowed_mentions,omitempty"`
+	Components      []Component      `json:"components,omitempty"`
 }
