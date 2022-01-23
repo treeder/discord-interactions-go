@@ -1,3 +1,3 @@
-module github.com/bsdlp/discord-interactions-go
+module github.com/treeder/discord-interactions-go
 
-go 1.15
+go 1.17

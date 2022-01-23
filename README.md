@@ -7,7 +7,7 @@ A golang implementation of discord slash commands [message verification](https:/
 ## Installation
 
 ```shell
-go get github.com/bsdlp/discord-interactions-go
+go get github.com/treeder/discord-interactions-go
 ```
 
 ## Usage

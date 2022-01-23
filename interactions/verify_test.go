@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/bsdlp/discord-interactions-go/interactions"
+	"github.com/treeder/discord-interactions-go/interactions"
 )
 
 func TestVerifyInteraction(t *testing.T) {

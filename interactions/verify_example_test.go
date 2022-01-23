@@ -7,7 +7,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/bsdlp/discord-interactions-go/interactions"
+	"github.com/treeder/discord-interactions-go/interactions"
 )
 
 func ExampleVerify() {
