@@ -37,3 +37,4 @@ jobs:
         git config --global user.name "Actions"
         git fetch --tags
         wget -O - https://raw.githubusercontent.com/treeder/bump/master/gitbump.sh | bash
+
